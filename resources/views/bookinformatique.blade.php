@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2, initial-scale=1.0">
-    <title>Livres de chimie</title>
+    <title>Livres d'informatiques</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <header>
@@ -21,8 +21,8 @@
 
 <body>
 
-    <h1>Les livres de Chimie</h1>
-    <!-- <p>Ceci sera la page pour bloguer sur les livres de chimie</p> -->
+    <h1>Les livres d'informatiques</h1>
+    <!-- <p>Ceci sera la page pour bloguer sur les livres de d'informatiques</p> -->
 </body>
 
 </html>

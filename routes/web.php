@@ -36,3 +36,6 @@ Route::get('bookgenie-civil', function () {
 Route::get('bookmedecine', function () {
     return view('bookmedecine');
 });
+Route::get('bookinformatique', function () {
+    return view('bookinformatique');
+});

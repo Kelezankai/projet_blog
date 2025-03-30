@@ -1,4 +1,4 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -103,7 +103,7 @@ header {
 
 .wrapper .icon-box.login {
     /*display: none ; */
-}
+/* }
 .form-box h2 {
     font-size: 2em;
     color: #162938;
@@ -209,6 +209,258 @@ header {
     cursor: pointer;
     z-index: 1;
 
+}
+
+.wrapper .form-box.Login-register {
+    position: absolute;
+    transform: translateY(400px);
+} */
+/* Reset global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Style du body */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f4f8;
+    background-image: url("https://via.placeholder.com/1500"); /* Remplace par une belle image de fond */
+    background-size: cover;
+    background-position: center;
+    color: #333;
+}
+
+/* Style du header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 60px;
+    background-color: #1e3d58; /* Fond bleu #1e3d58 pour la navbar */
+    display: flex;
+    justify-content: center; /* Centre la navbar */
+    align-items: center;
+    z-index: 99;
+}
+
+.logo {
+    font-size: 2em;
+    color: #ffffff;
+    user-select: none;
+    font-weight: 700;
+    margin-right: 500px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px; /* Ajuste l'espacement entre la logo et les liens */
+}
+
+.navigation a {
+    font-size: 1.1em;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 30px; /* Augmenter l'espacement entre les liens */
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navigation a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: #ffbb33; /* Couleur orange pour l'effet sous les liens */
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation a:hover {
+    color: #ffbb33; /* Couleur orange sur le survol des liens */
+}
+
+.navigation .btnLogin-popup {
+    width: 140px;
+    height: 45px;
+    background: transparent;
+    border: 2px solid #ffbb33; /* Bordure orange */
+    outline: none;
+    border-radius: 30px;
+    color: #ffbb33;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 30px; /* Espacement à gauche pour le bouton */
+}
+
+.navigation .btnLogin-popup:hover {
+    background: #ffbb33;
+    color: #1e3d58; /* Texte foncé sur fond orange */
+}
+
+/* Wrapper pour le formulaire */
+.wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+    margin-top: 120px;
+    transition: transform 0.3s ease;
+}
+
+/* Form box */
+.wrapper .form-box {
+    width: 100%;
+    padding: 20px;
+    color: #333;
+}
+
+/* Icon box et formulaire */
+.wrapper .form-box h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1e3d58; /* Titre en bleu foncé */
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 1em;
+    color: #1e3d58; /* Couleur du texte des labels */
+    font-weight: 500;
+    pointer-events: none;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    border: 2px solid #1e3d58; /* Bordure bleue foncée */
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.input-box input:focus {
+    border-color: #ffbb33;
+    box-shadow: 0 0 5px rgba(255, 187, 51, 0.6);
+}
+
+/* Icone de recherche */
+.input-box .icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5em;
+    color: #1e3d58;
+}
+
+/* Texte du bouton de connexion */
+.remember-forgot {
+    font-size: 0.9em;
+    color: #1e3d58;
+    font-weight: 500;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot a {
+    color: #1e3d58;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.remember-forgot a:hover {
+    color: #ffbb33;
+}
+
+/* Bouton de connexion */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #1e3d58;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #ffbb33;
+    color: #1e3d58;
+}
+
+/* Inscription et login */
+.Login-register {
+    font-size: 1em;
+    color: #1e3d58;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.Login-register p a {
+    color: #1e3d58;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.Login-register p a:hover {
+    text-decoration: underline;
+}
+
+/* Close icon */
+.wrapper .icon-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background: #1e3d58;
+    font-size: 1.8em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
 }
 
 .wrapper .form-box.Login-register {
