@@ -6,116 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
 
-        body {
-            background: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-
-        header {
-            width: 100%;
-            background: #2c3e50;
-            padding: 15px 0;
-            text-align: center;
-        }
-
-        .navigation a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        .form {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-
-        .form h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .input-box {
-            position: relative;
-            margin-bottom: 20px;
-        }
-
-        .input-box input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            outline: none;
-        }
-
-        .input-box label {
-            position: absolute;
-            top: 50%;
-            left: 10px;
-            transform: translateY(-50%);
-            color: #888;
-            pointer-events: none;
-            transition: 0.3s;
-        }
-
-        .input-box input:focus+label,
-        .input-box input:valid+label {
-            top: 5px;
-            font-size: 12px;
-            color: #2c3e50;
-        }
-
-        .checkbox-group {
-            margin: 15px 0;
-        }
-
-        .checkbox-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 10px;
-            background: #2c3e50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            background: #34495e;
-        }
-    </style>
 </head>
 
 <body>
-    <!-- <header>
+    <header>
         <nav class="navigation">
             <a href="Accueil">Accueil</a>
             <a href="#">À propos</a>
             <a href="#">Services</a>
             <a href="#">Contacts</a>
         </nav>
-    </header> -->
+    </header>
 
     <div class="form">
         <h2>Inscription</h2>
