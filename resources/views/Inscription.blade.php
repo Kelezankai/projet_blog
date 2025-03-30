@@ -133,6 +133,11 @@
                 <label>Email</label>
             </div>
             <div class="input-box">
+                <input type="password" id="password" required>
+                <label>Mot de passe</label>
+
+            </div>
+            <div class="input-box">
                 <input type="date" required>
                 <label>date_de_naiss</label>
             </div>
@@ -145,6 +150,9 @@
                 <label><input type="checkbox"> Livres de génie civil</label>
                 <label><input type="checkbox"> Livres de médecine</label>
                 <label><input type="checkbox"> Livres de géologie</label>
+                <<<<<<< HEAD=======<label><input type="checkbox"> Livres d'informatiques</label>
+
+                    >>>>>>> origin/ma-nouvelle-branche
             </div>
             <button type="submit" class="btn">S'inscrire</button>
         </form>

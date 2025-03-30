@@ -143,10 +143,14 @@
         <div class="category">
             <a href="bookgeologie">Les livres de Géologie</a>
         </div>
+        <div class="category">
+            <a href="bookinformatique">Les livres d'informatiques</a>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 Mon Site Web. Tous droits réservés.</p>
+        <p>&copy; 2025 Blogin pour ecrivain. Tous droits réservés.</p>
+
     </footer>
 </body>
 
