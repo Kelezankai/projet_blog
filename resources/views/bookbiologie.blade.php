@@ -21,8 +21,51 @@
 
 <body>
 
-    <h1>Les livres de Biologie</h1>
-    <!-- <p>Ceci sera la page pour bloguer sur les livres de Biologie</p> -->
+    <h1>Livres de biologie</h1>
+
+    @if($livres->isEmpty())
+    <p>Aucun livre de biologie disponible.</p>
+    @else
+    <ul>
+        @foreach($livres as $livre)
+        <li style="margin-bottom: 30px;">
+            <strong>{{ $livre->titre }}</strong><br>
+
+            {{-- ✅ Affichage de limage --}}
+            @if($livre->image)
+            <img src="{{ asset('storage/' . $livre->image) }}" alt="Image du livre" width="150" style="margin-top: 10px;"><br>
+            @endif
+
+            <em>{{ $livre->description }}</em><br>
+
+            {{-- ✅ Formulaire de commentaire --}}
+            @if(Auth::check() && Auth::user()->role === 'lecteur')
+            <form action="{{ route('commentaire.store', $livre->id) }}" method="POST" style="margin-top: 10px;">
+                @csrf
+                <textarea name="contenu" rows="3" cols="50" placeholder="Votre commentaire..." required></textarea><br>
+                <button type="submit">Commenter</button>
+            </form>
+            @endif
+
+            {{-- ✅ Liste des commentaires --}}
+            <h4>Commentaires :</h4>
+            @if($livre->commentaires->isEmpty())
+            <p>Aucun commentaire pour ce livre.</p>
+            @else
+            @foreach($livre->commentaires as $commentaire)
+            <div style="margin-left: 20px; margin-bottom: 10px;">
+                <strong>{{ $commentaire->user->name }}</strong> :
+                <p>{{ $commentaire->contenu }}</p>
+            </div>
+            @endforeach
+            @endif
+        </li>
+        @endforeach
+    </ul>
+    @endif
+
+
+
 </body>
 
 </html>

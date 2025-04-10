@@ -176,8 +176,20 @@
         </nav> -->
     </header>
 
+    <form action="{{ url('livres/Connexion') }}" method="POST">
+        @csrf
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="password" name="password" placeholder="Mot de passe" required>
+        <button type="submit">Se connecter</button>
+
+    </form>
+    <form action="{{ url('livres/deconnexion') }}" method="POST">
+        @csrf
+        <button type="submit">Se déconnecter</button>
+    </form>
+
     <!-- Formulaire de Connexion -->
-    <div class="login-container">
+    <!-- <div class="login-container">
         <h2>Connexion</h2>
         <form action="traitement.php" method="POST">
             <div class="input-field">
@@ -194,7 +206,7 @@
                 <p>Vous n'avez pas de compte ? <a href="Inscription">S'inscrire</a></p>
             </div>
         </form>
-    </div>
+    </div> -->
 
 </body>
 

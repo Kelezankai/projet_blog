@@ -117,34 +117,41 @@
             <a href="#">Services</a>
             <a href="#">Contact</a>
             <a href="Connexion"><button class="btnLogin-popup">Login</button></a>
+            <a href="Inscription"><button class="btnLogin-popup">inscrire</button></a>
+
+
+
+
         </nav>
     </header>
 
     <main>
         <div class="section-title">Explorez Nos Livres</div>
         <div class="category">
-            <a href="bookchimie">Les livres de chimie</a>
+            <a href="/livres/chimie">Les livres de chimie</a>
         </div>
         <div class="category">
-            <a href="bookphysique">Les livres de Physique</a>
+            <!-- <a href="bookphysique">Les livres de Physique</a> -->
+            <a href="/livres/physique">Les livres de Physique</a>
+
         </div>
         <div class="category">
-            <a href="bookmath">Les livres de Mathématiques</a>
+            <a href="/livres/math">Les livres de Mathématiques</a>
         </div>
         <div class="category">
-            <a href="bookbiologie">Les livres de Biologie</a>
+            <a href="/livres/biologie">Les livres de Biologie</a>
         </div>
         <div class="category">
-            <a href="bookgenie-civil">Les livres de Génie Civil</a>
+            <a href="/livres/genie-civil">Les livres de Génie Civil</a>
         </div>
         <div class="category">
-            <a href="bookmedecine">Les livres de Médecine</a>
+            <a href="/livres/medecine">Les livres de Médecine</a>
         </div>
         <div class="category">
-            <a href="bookgeologie">Les livres de Géologie</a>
+            <a href="/livres/geologie">Les livres de Géologie</a>
         </div>
         <div class="category">
-            <a href="bookinformatique">Les livres d'informatiques</a>
+            <a href="/livres/informatique">Les livres d'informatiques</a>
         </div>
     </main>
 
