@@ -14,7 +14,6 @@
             <nav class="navigation">
                 <a href="#">Accueil</a>
                 <a href="#">à propos</a>
-                <a href="#">Services</a>
                 <a href="#">Contacts</a>
                 <button  class="btnLogin-popup">Login</button>
             </nav>
@@ -22,12 +21,12 @@
           <img class="fond_page" href="C:\Users\HP\Desktop\C.E.C\Collectif.jpeg">
 
         <div class="wrapper">
-            <span class="icon-close">
+            <!-- <span class="icon-close">
                 <ion-icon name="close-outline"></ion-icon>
-            </span>
+            </span> -->
            <div class="form-box Login">
             <h2>Login</h2>
-            <form method="post" action="traitement.php">
+            <form method="post" action="Connexion">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail"></ion-icon></span>
                     <input type="email" required>
@@ -38,13 +37,13 @@
                     <input type="password" required>
                     <label>mot de passe</label>
                 </div>
-                <div class="remember-forgot">
+                <!-- <div class="remember-forgot">
                     <label><input type="checkbox">Remember me</label>
                     <a href="#">Forgot password?</a>
-                </div>
-                <button type="submit" class="btn">Login</button>
+                </div> -->
+                <button type="submit"  class="btn">Login</button>
                 <div class="Login-register">
-                    <p>Don't have an account ?<a href="formulaire make my persona.html" class="register-link">Register</a></p>
+                    <p>Don't have an account ?<a href="Inscription" class="register-link">Register</a></p>
                 </div>
             </form>
            </div> 

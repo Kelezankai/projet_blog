@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2, initial-scale=1.0">
-    <title>Document</title>
+    <title>Accueil</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/livre.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/https://rsms.me/inter/inter.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/post.css')}}"> -->
 </head>
+<body>
 <header>
+       <a class="logo" href="Accueil">Logo </a>
             <nav class="navigation">
-                <a href="Accueil">Accueil</a>
+                <a href="#">Accueil</a>
                 <a href="#">à propos</a>
-                <a href="#">Services</a>
                 <a href="#">Contacts</a>
-                <button  class="btnLogin-popup">Login</button>
+                <button type="submit" href="Connexion" class="btnLogin-popup">Login</button>
             </nav>
-        </header>
+        </header>      
 <body>
    
     <!-- <h1>Bienvenue sur Notre Blog sur les livres scientifiques</h1><br>
     <p>Veullez renseigner certaines insformations pour vous inscrire et profiter pleinement d'une expérience de blogeur</p> -->
+   
+    <div class="wrapper">
     <div class="form">
-        <form action="check_inscrition.php" method="get">
-        <div class="input-box">
+        <form action="password" method="get">
+           <div class="input-box">
                 <input type="text" required>
                 <label>Entrez votre Nom</label>
             </div>
@@ -37,27 +43,10 @@
                 <input type="date" required>
                 <label>Entrez votre date de naissance</label>
             </div>
-            <hr>
-            <p>Selectionnez les types de livre que vous aimeimeriez</p>
-            <label class="label" for="Categories">Livres de chimie</label>
-            <input type="checkbox" for="Categories"><br>
-            <label class="label" for="Categories">Livres de Biologie</label>
-            <input type="checkbox" for="Categories"><br>
-            <label class="label" for="Categories">Livres de Physique</label>
-            <input type="checkbox" for="Categories"><br>
-            <label class="label" for="Categories">Livres de Mathématique</label>
-            <input type="checkbox" for="Categories"><br>
-            <label class="label" for="Categories">Livres de génie_civil</label>
-            <input type="checkbox" for="Categories"> <br>
-            <label class="label" for="Categories">Livres de Biologie</label>
-            <input type="checkbox" for="Categories"><br>
-            <label class="label" for="Categories">Livres de médecine</label>
-            <input type="checkbox" for="Categories"><br>
-            <label class="label" for="Categories">Livres de géologie</label>
-            <input type="checkbox" for="Categories"><br>
-            <hr>
-            <button type="submit" class="btn">S'inscrire</button>
+            <button type="submit" class="btn">Continuer</button>
         </form>
     </div>
+    </div>
+   
 </body>
 </html>
