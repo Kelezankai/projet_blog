@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;  // Si tu crées un contrôleur personn
 use App\Http\Controllers\LivreController;
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Auth;
+
 
 
 Route::get('/', function () {
@@ -107,7 +109,6 @@ Route::get('/livres/biologie', [LivreController::class, 'afficherParCategorie'])
 
 
 
-use Illuminate\Support\Facades\Auth;
 
 Route::get('/ecrivain/dashboard', function () {
     // Vérifie si l'utilisateur est un écrivain
