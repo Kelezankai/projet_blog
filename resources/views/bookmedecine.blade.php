@@ -12,7 +12,6 @@
 </head>
 <body>
 <header>
-<<<<<<< HEAD
        <a class="logo" href="Accueil">Logo </a>
             <nav class="navigation">
                 <a href="Connexion">Accueil</a>
@@ -21,17 +20,6 @@
                 <button type="submit" href="Connexion" class="btnLogin-popup">Login</button>
             </nav>
         </header>      
-=======
-    <nav class="navigation">
-        <a href="Accueil">Accueil</a>
-        <a href="#">À propos</a>
-        <a href="#">Services</a>
-        <a href="#">Contacts</a>
-        <button class="btnLogin-popup">Login</button>
-    </nav>
-</header>
-
->>>>>>> ea16a3fb272fbb12e8b2eb7f9443ba5260c2d09a
 <body>
 
     <h1>Les livres de medecine</h1>

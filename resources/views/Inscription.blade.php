@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD
     <meta name="viewport" content="width=2, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -30,28 +29,6 @@
     <div class="form">
         <form action="password" method="get">
            <div class="input-box">
-=======
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-</head>
-
-<body>
-    <header>
-        <nav class="navigation">
-            <a href="Accueil">Accueil</a>
-            <a href="#">À propos</a>
-            <a href="#">Services</a>
-            <a href="#">Contacts</a>
-        </nav>
-    </header>
-
-    <div class="form">
-        <h2>Inscription</h2>
-        <form action="check_inscription.php" method="get">
-            <div class="input-box">
->>>>>>> ea16a3fb272fbb12e8b2eb7f9443ba5260c2d09a
                 <input type="text" required>
                 <label>Nom</label>
             </div>

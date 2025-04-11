@@ -7,7 +7,6 @@
     <title>COLLECTIF DES ETUDIANTS POUR LE CHANGEMENT</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-<<<<<<< HEAD
         <header>
             <h2 class="logo">Logo </h2>
             <nav class="navigation">
@@ -46,11 +45,6 @@
                 </div>
             </form>
            </div> 
-=======
-</head>
-
-<body>
->>>>>>> ea16a3fb272fbb12e8b2eb7f9443ba5260c2d09a
 
     <header>
         <h2 class="logo">Logo </h2>
