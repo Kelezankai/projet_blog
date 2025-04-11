@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <meta name="viewport" content="width=2, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -28,25 +30,68 @@
     <div class="form">
         <form action="password" method="get">
            <div class="input-box">
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+</head>
+
+<body>
+    <header>
+        <nav class="navigation">
+            <a href="Accueil">Accueil</a>
+            <a href="#">À propos</a>
+            <a href="#">Services</a>
+            <a href="#">Contacts</a>
+        </nav>
+    </header>
+
+    <div class="form">
+        <h2>Inscription</h2>
+        <form action="check_inscription.php" method="get">
+            <div class="input-box">
+>>>>>>> ea16a3fb272fbb12e8b2eb7f9443ba5260c2d09a
                 <input type="text" required>
-                <label>Entrez votre Nom</label>
+                <label>Nom</label>
             </div>
             <div class="input-box">
                 <input type="text" required>
-                <label>Entrez Votre Prénom</label>
+                <label>Prénom</label>
             </div>
             <div class="input-box">
                 <input type="email" required>
-                <label>Entrez votre Email</label>
+                <label>Email</label>
+            </div>
+            <div class="input-box">
+                <input type="password" id="password" required>
+                <label>Mot de passe</label>
             </div>
             <div class="input-box">
                 <input type="date" required>
-                <label>Entrez votre date de naissance</label>
+                <label>date_de_naiss</label>
             </div>
+            <div class="checkbox-group">
+                <p>Sélectionnez vos catégories de livres préférées :</p>
+                <label><input type="checkbox"> Livres de chimie</label>
+                <label><input type="checkbox"> Livres de biologie</label>
+                <label><input type="checkbox"> Livres de physique</label>
+                <label><input type="checkbox"> Livres de mathématiques</label>
+                <label><input type="checkbox"> Livres de génie civil</label>
+                <label><input type="checkbox"> Livres de médecine</label>
+                <label><input type="checkbox"> Livres de géologie</label>
+                <label><input type="checkbox"> Livres d'informatiques</label>
+
+            </div>
+<<<<<<< HEAD
             <button type="submit" class="btn">Continuer</button>
+=======
+            <button type="submit" class="btn">S'inscrire</button>
+>>>>>>> ea16a3fb272fbb12e8b2eb7f9443ba5260c2d09a
         </form>
     </div>
     </div>
    
 </body>
+
 </html>

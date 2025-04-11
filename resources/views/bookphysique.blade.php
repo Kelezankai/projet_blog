@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=2, initial-scale=1.0">
     <title>Accueil</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<<<<<<< HEAD
     <!-- <link rel="stylesheet" href="{{ asset('css/livre.css') }}">
     <link rel="stylesheet" href="{{ asset('css/https://rsms.me/inter/inter.css')}}">
     <link rel="stylesheet" href="{{ asset('css/post.css')}}"> -->
+=======
+
+
+>>>>>>> ea16a3fb272fbb12e8b2eb7f9443ba5260c2d09a
 </head>
 <body>
 <header>
+<<<<<<< HEAD
        <a class="logo" href="Accueil">Logo </a>
             <nav class="navigation">
                 <a href="#">Accueil</a>
@@ -19,9 +26,22 @@
                 <button type="submit" href="Connexion" class="btnLogin-popup">Login</button>
             </nav>
         </header>      
+=======
+    <nav class="navigation">
+        <a href="Accueil">Accueil</a>
+        <a href="#">À propos</a>
+        <a href="#">Services</a>
+        <a href="#">Contacts</a>
+        <a href="Connexion"><button class="btnLogin-popup">Login</button></a>
+
+    </nav>
+</header>
+
+>>>>>>> ea16a3fb272fbb12e8b2eb7f9443ba5260c2d09a
 <body>
-   
+
     <h1>Les livres de Physique</h1>
     <!-- <p>Ceci sera la page pour bloguer sur les livres de Physique</p> -->
 </body>
+
 </html>
