@@ -154,10 +154,8 @@
             <a href="/livres/informatique">Les livres d'informatiques</a>
         </div>
     </main>
-
     <footer>
         <p>&copy; 2025 Blogin pour ecrivain. Tous droits réservés.</p>
-
     </footer>
 </body>
 

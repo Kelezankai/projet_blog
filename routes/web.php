@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('livres/Accueil', function () {
+Route::get('php', function () {
     return view('Accueil');
 })->name('livres.accueil');
 
