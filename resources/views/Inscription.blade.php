@@ -27,44 +27,33 @@
    
     <div class="wrapper">
     <div class="form">
-        <form action="password" method="get">
+        <form action="{{ route('inscription.submit') }}"  method="get">
+            @csrf
            <div class="input-box">
-                <input type="text" required>
-                <label>Nom</label>
+           <input type="text" id="firstname" name="firstname" value="{{ old('firstname') }}" required>
+
+             <label for="name">Nom</label>
             </div>
             <div class="input-box">
-                <input type="text" required>
-                <label>Prénom</label>
+            <input type="text" id="firstname" name="firstname" value="{{ old('firstname') }}" required>
+             <label for=""firstname>Prénom</label>
             </div>
             <div class="input-box">
-                <input type="email" required>
-                <label>Email</label>
-            </div>
-            <div class="input-box">
-                <input type="password" id="password" required>
-                <label>Mot de passe</label>
-            </div>
-            <div class="input-box">
-                <input type="date" required>
-                <label>date_de_naiss</label>
-            </div>
-            <div class="checkbox-group">
-                <p>Sélectionnez vos catégories de livres préférées :</p>
-                <label><input type="checkbox"> Livres de chimie</label>
-                <label><input type="checkbox"> Livres de biologie</label>
-                <label><input type="checkbox"> Livres de physique</label>
-                <label><input type="checkbox"> Livres de mathématiques</label>
-                <label><input type="checkbox"> Livres de génie civil</label>
-                <label><input type="checkbox"> Livres de médecine</label>
-                <label><input type="checkbox"> Livres de géologie</label>
-                <label><input type="checkbox"> Livres d'informatiques</label>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{ old('email') }}" required>
 
             </div>
-<<<<<<< HEAD
-            <button type="submit" class="btn">Continuer</button>
-=======
+            <div class="input-box">
+            <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-box">
+                <label for="password_confirmation">Confirmer le mot de passe :</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" required>
+            </div>
+
             <button type="submit" class="btn">S'inscrire</button>
->>>>>>> ea16a3fb272fbb12e8b2eb7f9443ba5260c2d09a
+            @csrf
         </form>
     </div>
     </div>
