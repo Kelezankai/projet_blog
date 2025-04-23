@@ -3,26 +3,23 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=2, initial-scale=1.0">
-    <title>Livres de Physique</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-
 </head>
-<header>
-    <nav class="navigation">
-        <a href="Accueil">Accueil</a>
-        <a href="#">À propos</a>
-        <a href="#">Services</a>
-        <a href="#">Contacts</a>
-        <a href="Connexion"><button class="btnLogin-popup">Login</button></a>
-
-    </nav>
-</header>
 
 <body>
+    <header>
+        <a class="logo" href="Accueil">Logo</a>
+        <nav class="navigation">
+            <a href="Accueil">Accueil</a>
+            <a href="#">À propos</a>
+            <a href="#">Services</a>
+            <a href="#">Contacts</a>
+            <a href="Connexion"><button class="btnLogin-popup">Login</button></a>
+        </nav>
+    </header>
 
-    <!-- resources/views/bookphysique.blade.php -->
     <h1>Livres de Physique</h1>
 
     @if($livres->isEmpty())
@@ -33,14 +30,12 @@
         <li style="margin-bottom: 30px;">
             <strong>{{ $livre->titre }}</strong><br>
 
-            {{-- ✅ Affichage de limage --}}
             @if($livre->image)
             <img src="{{ asset('storage/' . $livre->image) }}" alt="Image du livre" width="150" style="margin-top: 10px;"><br>
             @endif
 
             <em>{{ $livre->description }}</em><br>
 
-            {{-- ✅ Formulaire de commentaire --}}
             @if(Auth::check() && Auth::user()->role === 'lecteur')
             <form action="{{ route('commentaire.store', $livre->id) }}" method="POST" style="margin-top: 10px;">
                 @csrf
@@ -49,7 +44,6 @@
             </form>
             @endif
 
-            {{-- ✅ Liste des commentaires --}}
             <h4>Commentaires :</h4>
             @if($livre->commentaires->isEmpty())
             <p>Aucun commentaire pour ce livre.</p>
@@ -65,13 +59,6 @@
         @endforeach
     </ul>
     @endif
-
-
-
-
-
-    <!-- <p>Ceci sera la page pour bloguer sur les livres de Physique</p> -->
-
 
 </body>
 
