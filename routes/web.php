@@ -10,15 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/Accueil', function () {
-    return view('Accueil'); // Respecte bien la casse
+    return view('accueil'); // Respecte bien la casse
 });
 
 Route::get('Inscription', function () {
     return view('Inscription');
 });
+
 Route::get('livres/Connexion', function () {
     return view('Connexion');
 });
