@@ -10,8 +10,34 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', function () {
-    return view('accueil'); // Respecte bien la casse
-});
+    return view('Accueil'); // Respecte bien la casse
+})->name('Accueil');
+
+Route::get('/discover', function () {
+    return view('discover');
+})->name('discover');
+
+
+
+
+Route::get('/decouvrir', function () {
+    return view('book.show');
+})->name('decouvrir');
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+// Route::get('/livre/detail', function () {
+//     return view('book.detail');
+// })->name('livre.detail');
+
+
+
 
 Route::get('Inscription', function () {
     return view('Inscription');
