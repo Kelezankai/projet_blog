@@ -1,162 +1,106 @@
-<!DOCTYPE html>
-<html lang="fr">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
-    <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+@section('title', 'Accueil')
 
-        /* Style global */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7fb;
-            color: #333;
-            line-height: 1.6;
-        }
+@section('content')
+<div class="container mx-auto">
 
-        header {
-            background-color: #1e3d58;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-
-        .logo {
-            font-size: 1.8em;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-
-        nav a {
-            margin: 0 15px;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-
-        nav a:hover {
-            color: #f9c74f;
-            text-decoration: underline;
-        }
-
-        .btnLogin-popup {
-            background-color: #f9c74f;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .btnLogin-popup:hover {
-            background-color: #f1a10a;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        .section-title {
-            font-size: 2em;
-            color: #333;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .category {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            margin-bottom: 15px;
-            padding: 15px;
-            border-radius: 8px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .category a {
-            color: #1e3d58;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-
-        .category a:hover {
-            color: #f9c74f;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #1e3d58;
-            color: white;
-        }
-
-        footer p {
-            font-size: 1em;
-        }
-    </style>
-</head>
-
-<body>
-    <header>
-        <h2 class="logo">Logo</h2>
-        <nav>
-            <a href="#">Accueil</a>
-            <a href="#">À propos</a>
-            <a href="#">Services</a>
-            <a href="#">Contact</a>
-            <a href="Connexion"><button class="btnLogin-popup">Login</button></a>
-            <a href="Inscription"><button class="btnLogin-popup">inscrire</button></a>
-
-
-
-
-        </nav>
-    </header>
-
-    <main>
-        <div class="section-title">Explorez Nos Livres</div>
-        <div class="category">
-            <a href="/livres/chimie">Les livres de chimie</a>
+    <!-- Slider -->
+    <div class="relative overflow-hidden rounded-lg shadow-lg mb-12">
+        <div class="relative w-full h-64">
+            <div class="absolute inset-0 animate-slide">
+                <img src="{{ asset('img/bikes.png') }}" alt="Image 1" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute inset-0 animate-slide delay-3000">
+                <img src="{{ asset('img/blue.png') }}" alt="Image 2" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute inset-0 animate-slide delay-6000">
+                <img src="{{ asset('img/notes.png') }}" alt="Image 3" class="w-full h-full object-cover">
+            </div>
         </div>
-        <div class="category">
-            <!-- <a href="bookphysique">Les livres de Physique</a> -->
-            <a href="/livres/physique">Les livres de Physique</a>
+    </div>
 
-        </div>
-        <div class="category">
-            <a href="/livres/math">Les livres de Mathématiques</a>
-        </div>
-        <div class="category">
-            <a href="/livres/biologie">Les livres de Biologie</a>
-        </div>
-        <div class="category">
-            <a href="/livres/genie-civil">Les livres de Génie Civil</a>
-        </div>
-        <div class="category">
-            <a href="/livres/medecine">Les livres de Médecine</a>
-        </div>
-        <div class="category">
-            <a href="/livres/geologie">Les livres de Géologie</a>
-        </div>
-        <div class="category">
-            <a href="/livres/informatique">Les livres d'informatiques</a>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2025 Blogin pour ecrivain. Tous droits réservés.</p>
-    </footer>
-</body>
+    <!-- Présentation -->
+    <div class="mt-12 text-center">
+        <h1 class="text-5xl font-bold text-gray-800">Bienvenue sur MonBlog !</h1>
+        <p class="mt-4 text-lg text-gray-600">Découvrez, lisez et écrivez vos histoires préférées. Rejoignez notre communauté d'écrivains et lecteurs passionnés.</p>
+        <a href="{{ route('discover') }}" class="mt-6 inline-block px-8 py-4 orange-button rounded-full text-lg shadow-md hover:bg-orange-600 transition-all duration-300">Commencer</a>
+    </div>
 
-</html>
+    <!-- Sections supplémentaires -->
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="text-center bg-white p-8 rounded-lg shadow-lg">
+            <i class="fas fa-book-open text-5xl text-orange-500 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-gray-800">Lisez des Histoires</h3>
+            <p class="mt-2 text-gray-600">Explorez une vaste bibliothèque d'histoires captivantes écrites par des auteurs du monde entier.</p>
+        </div>
+        <div class="text-center bg-white p-8 rounded-lg shadow-lg">
+            <i class="fas fa-pencil-alt text-5xl text-orange-500 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-gray-800">Écrivez Vos Prores</h3>
+            <p class="mt-2 text-gray-600">Exprimez-vous et partagez vos récits avec une communauté grandissante d'écrivains et de lecteurs.</p>
+        </div>
+        <div class="text-center bg-white p-8 rounded-lg shadow-lg">
+            <i class="fas fa-users text-5xl text-orange-500 mb-4"></i>
+            <h3 class="text-2xl font-semibold text-gray-800">Rejoignez la Communauté</h3>
+            <p class="mt-2 text-gray-600">Connectez-vous avec d'autres passionnés et échangez des idées, conseils et inspirations.</p>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="mt-16 text-center">
+        <h2 class="text-3xl font-bold text-gray-800">Vous êtes prêts à commencer ?</h2>
+        <p class="mt-4 text-lg text-gray-600">Rejoignez-nous et commencez votre aventure littéraire aujourd'hui !</p>
+        <a href="{{ route('register') }}" class="mt-6 inline-block px-8 py-4 bg-orange-500 text-black rounded-full text-lg shadow-md hover:bg-orange-600 transition-all duration-300 flex items-center justify-center">
+            <i class="fas fa-user-plus text-black mr-2"></i> Inscription
+        </a>
+
+
+    </div>
+
+</div>
+
+<style>
+    @keyframes slideShow {
+
+        0%,
+        25% {
+            opacity: 1;
+        }
+
+        30%,
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .animate-slide {
+        animation: slideShow 9s infinite;
+        position: absolute;
+    }
+
+    .animate-slide.delay-3000 {
+        animation-delay: 3s;
+    }
+
+    .animate-slide.delay-6000 {
+        animation-delay: 6s;
+    }
+
+    .orange-button {
+        background-color: #ff5722;
+        color: white;
+        transition: background-color 0.3s;
+    }
+
+    .orange-button:hover {
+        background-color: #e64a19;
+    }
+
+    /* Effet hover sur les cartes des services */
+    .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+</style>
+@endsection

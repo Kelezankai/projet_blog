@@ -1,70 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+<?php
+$livres = array(
+    'blue image' => array(
+        'image' => 'img/blue.png',
+        'description' => "Un voyage apaisant à travers des paysages d'un bleu profond."
+    ),
+    'bikes image' => array(
+        'image' => 'img/bikes.png',
+        'description' => "L'histoire fascinante des cyclistes intrépides à travers le monde."
+    ),
+    'pancakes image' => array(
+        'image' => 'img/pancakes.png',
+        'description' => "Une aventure gourmande autour des crêpes les plus délicieuses."
+    ),
+); ?>
+@section('title', 'Découvrir')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=2, initial-scale=1.0">
-    <title>Livres de Géologie</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<header>
-    <h2 class="logo">Logo</h2> <!-- Logo ici -->
-    <nav class="navigation">
-        <a href="Accueil">Accueil</a>
-        <a href="#">À propos</a>
-        <a href="#">Services</a>
-        <a href="#">Contacts</a>
-        <a href="Connexion"><button class="btnLogin-popup">Login</button></a>
-
-    </nav>
-</header>
-
-<body>
-
-    <h1>Livres de geologie</h1>
-
-    @if($livres->isEmpty())
-    <p>Aucun livre de geologie.</p>
-    @else
-    <ul>
-        @foreach($livres as $livre)
-        <li style="margin-bottom: 30px;">
-            <strong>{{ $livre->titre }}</strong><br>
-
-            {{-- ✅ Affichage de limage --}}
-            @if($livre->image)
-            <img src="{{ asset('storage/' . $livre->image) }}" alt="Image du livre" width="150" style="margin-top: 10px;"><br>
-            @endif
-
-            <em>{{ $livre->description }}</em><br>
-
-            {{-- ✅ Formulaire de commentaire --}}
-            @if(Auth::check() && Auth::user()->role === 'lecteur')
-            <form action="{{ route('commentaire.store', $livre->id) }}" method="POST" style="margin-top: 10px;">
-                @csrf
-                <textarea name="contenu" rows="3" cols="50" placeholder="Votre commentaire..." required></textarea><br>
-                <button type="submit">Commenter</button>
-            </form>
-            @endif
-
-            {{-- ✅ Liste des commentaires --}}
-            <h4>Commentaires :</h4>
-            @if($livre->commentaires->isEmpty())
-            <p>Aucun commentaire pour ce livre.</p>
-            @else
-            @foreach($livre->commentaires as $commentaire)
-            <div style="margin-left: 20px; margin-bottom: 10px;">
-                <strong>{{ $commentaire->user->name }}</strong> :
-                <p>{{ $commentaire->contenu }}</p>
-            </div>
-            @endforeach
-            @endif
-        </li>
-        @endforeach
-    </ul>
-    @endif
-
-    <!-- <p>Ceci sera la page pour bloguer sur les livres de Géologie</p> -->
-</body>
-
-</html>
+@section('content')
+<h1 class="text-4xl font-bold text-center mb-12 text-orange-500">Les Livres de Géologie</h1>
+<section class="container mx-auto px-4 py-12">
+   <div class="Bookbiologie">
+   <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+   <?php foreach ($livres as $titre => $details): ?>
+    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition duration-300">
+        <img src="<?= asset($details['image']) ?>" alt="<?= htmlspecialchars($titre) ?>" class="w-full h-48 object-cover">
+        <div class="p-6">
+            <h2 class="text-xl font-semibold mb-2 text-gray-800"><?= htmlspecialchars($titre) ?></h2>
+            <p class="text-gray-600 text-sm mb-4"><?= htmlspecialchars($details['description']) ?></p>
+            <a href="#" class="orange-button px-4 py-2 rounded-md inline-block">Lire</a>
+        </div>
+    </div>
+<?php endforeach; ?>    
+@endsection
