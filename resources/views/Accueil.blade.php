@@ -23,7 +23,7 @@
     <!-- Présentation -->
     <div class="mt-12 text-center">
         <h1 class="text-5xl font-bold text-gray-800">Bienvenue sur MonBlog !</h1>
-        <p class="mt-4 text-lg text-gray-600">Découvrez, lisez et écrivez vos histoires préférées. Rejoignez notre communauté d'écrivains et lecteurs passionnés.</p>
+        <p class="mt-4 text-lg text-gray-600">Découvrez, lisez et écrivez vos Livres préférées. Rejoignez notre communauté de scientifiques et de  lecteurs passionnés.</p>
         <a href="{{ route('discover') }}" class="mt-6 inline-block px-8 py-4 orange-button rounded-full text-lg shadow-md hover:bg-orange-600 transition-all duration-300">Commencer</a>
     </div>
 
@@ -32,7 +32,7 @@
         <div class="text-center bg-white p-8 rounded-lg shadow-lg">
             <i class="fas fa-book-open text-5xl text-orange-500 mb-4"></i>
             <h3 class="text-2xl font-semibold text-gray-800">Lisez des Histoires</h3>
-            <p class="mt-2 text-gray-600">Explorez une vaste bibliothèque d'histoires captivantes écrites par des auteurs du monde entier.</p>
+            <p class="mt-2 text-gray-600">Explorez une vaste bibliothèque de LIvre à la fois éducative que captivantes écrites par des auteurs du monde entier.</p>
         </div>
         <div class="text-center bg-white p-8 rounded-lg shadow-lg">
             <i class="fas fa-pencil-alt text-5xl text-orange-500 mb-4"></i>
@@ -49,7 +49,7 @@
     <!-- Call to Action -->
     <div class="mt-16 text-center">
         <h2 class="text-3xl font-bold text-gray-800">Vous êtes prêts à commencer ?</h2>
-        <p class="mt-4 text-lg text-gray-600">Rejoignez-nous et commencez votre aventure littéraire aujourd'hui !</p>
+        <p class="mt-4 text-lg text-gray-600">Rejoignez-nous et commencez à faire partie d'une Communauté scientifique aujourd'hui !</p>
         <a href="{{ route('register') }}" class="mt-6 inline-block px-8 py-4 bg-orange-500 text-black rounded-full text-lg shadow-md hover:bg-orange-600 transition-all duration-300 flex items-center justify-center">
             <i class="fas fa-user-plus text-black mr-2"></i> Inscription
         </a>

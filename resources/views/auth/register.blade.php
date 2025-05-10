@@ -6,7 +6,7 @@
 <div class="container mx-auto p-4">
     <h1 class="text-3xl font-bold text-center mb-6 text-orange-600">Inscription</h1>
 
-    <form action="{{ route('register') }}" method="POST" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8">
+    <form action="{{ route('register') }}" method="GET" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8">
         @csrf
 
         <!-- Nom -->

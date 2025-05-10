@@ -70,3 +70,8 @@ Route::get('bookmedecine', function () {
 Route::get('bookinformatique', function () {
     return view('bookinformatique');
 });
+Route::get('Lecture', function () {
+    return view('show');
+});
+// route permettant d'afficher un article en fonction de son id 
+Route::get('/livre/{id}', [LivreController::class, 'show'])->name('livre.show');

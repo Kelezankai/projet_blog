@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Livre extends Model
 {
     use HasFactory;
-
-    // ✅ Ajout du champ image ici
-    protected $fillable = ['titre', 'description', 'categorie', 'image', 'user_id'];
+    protected $fillable = ['id','titre', 'description', 'categorie',' user_id','created_at','updated_at', 'image'];
 
     /**
      * Un livre peut avoir plusieurs commentaires.

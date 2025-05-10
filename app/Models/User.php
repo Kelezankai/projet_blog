@@ -16,19 +16,23 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'id',
+        'nom',
+        'prenom',
         'email',
-        'firstname',
+        ' email_verified_at',
         'password',
-        'role',
+        ' remember_token',
+        'created_at',
+        'updated_at',
+        'rôle',
     ];
-
     /**
      * Vérifie si l'utilisateur est un écrivain.
      */
     public function isWriter()
     {
-        return $this->role == 'ecrivain';
+        return $this->rôle == 'ecrivain';
     }
 
     /**
@@ -36,7 +40,7 @@ class User extends Authenticatable
      */
     public function isReader()
     {
-        return $this->role == 'lecteur';
+        return $this->rôle == 'lecteur';
     }
 
     /**

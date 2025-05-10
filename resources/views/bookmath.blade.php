@@ -27,7 +27,7 @@ $livres = array(
         <div class="p-6">
             <h2 class="text-xl font-semibold mb-2 text-gray-800"><?= htmlspecialchars($titre) ?></h2>
             <p class="text-gray-600 text-sm mb-4"><?= htmlspecialchars($details['description']) ?></p>
-            <a href="#" class="orange-button px-4 py-2 rounded-md inline-block">Lire</a>
+            <a href="{{ route('livre.show', $livre['id']) }}" class="orange-button px-4 py-2 rounded-md inline-block">Lire</a>
         </div>
     </div>
 <?php endforeach; ?>    
