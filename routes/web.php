@@ -17,6 +17,9 @@ Route::get('/discover', function () {
     return view('discover');
 })->name('discover');
 
+Route::get('/decouvrir', function () {
+    return view('discover');
+})->name('decouvrir');
 
 
 
