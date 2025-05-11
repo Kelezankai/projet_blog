@@ -3,7 +3,7 @@
 //Connexion à la base de données
  $dsn = "mysql:host=localhost;dbname=projet_tache;charset=utf8";
  $user = "root";
- $password = "code";
+ $password = "";
 
  try {
      $pdo = new PDO($dsn, $user, $password);

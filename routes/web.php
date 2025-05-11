@@ -20,17 +20,17 @@ Route::get('/discover', function () {
 
 
 
-Route::get('/decouvrir', function () {
-    return view('book.show');
-})->name('decouvrir');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
+// Optionnel : route pour la page de connexion (GET)
 Route::get('/login', function () {
     return view('auth.login');
-})->name('login');
+})->name('login.page');
 
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.store');
 
 // Route::get('/livre/detail', function () {
 //     return view('book.detail');
@@ -39,9 +39,7 @@ Route::get('/register', function () {
 
 
 
-Route::get('Inscription', function () {
-    return view('Inscription');
-});
+
 
 Route::get('livres/Connexion', function () {
     return view('Connexion');

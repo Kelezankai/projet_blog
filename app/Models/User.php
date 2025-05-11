@@ -17,16 +17,18 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'nom',
-        'prenom',
+        'name',
+        'firstname',
         'email',
-        ' email_verified_at',
+        'email_verified_at',
         'password',
-        ' remember_token',
+        'remember_token',
         'created_at',
         'updated_at',
-        'rôle',
+        'role',
     ];
+
+
     /**
      * Vérifie si l'utilisateur est un écrivain.
      */

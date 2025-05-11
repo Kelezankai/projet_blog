@@ -8,12 +8,20 @@
 
     <form action="{{ route('login') }}" method="POST" class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8">
         @csrf
+        @if($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {{ $errors->first() }}
+        </div>
+        @endif
         <div class="mb-6">
             <label for="email" class="block text-sm font-semibold text-gray-700">Adresse Email</label>
             <div class="flex items-center border border-gray-300 rounded-md p-2 focus-within:border-orange-500 transition duration-300 ease-in-out">
                 <i class="fas fa-envelope text-gray-500 mr-3"></i> <!-- Icone Email -->
                 <input type="email" id="email" name="email" class="w-full p-2 bg-transparent focus:outline-none text-gray-700 placeholder-gray-500" placeholder="Email" required>
             </div>
+            @error('email')
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
         </div>
 
         <div class="mb-6">
@@ -22,6 +30,9 @@
                 <i class="fas fa-lock text-gray-500 mr-3"></i> <!-- Icone Mot de passe -->
                 <input type="password" id="password" name="password" class="w-full p-2 bg-transparent focus:outline-none text-gray-700 placeholder-gray-500" placeholder="Mot de passe" required>
             </div>
+            @error('password')
+            <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
         </div>
 
         <button type="submit" class="orange-button py-2 px-6 rounded-lg w-full text-white hover:bg-orange-600 transition duration-300 ease-in-out transform hover:scale-105">
