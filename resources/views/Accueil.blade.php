@@ -1,178 +1,116 @@
-@php
-$livre =[
-    'zkIVBIVU' => asset('img/blue.png'),
-    'zkvIVBIVU' => asset('img/bikes.png'),
-    'vhbvivhlbv' => asset('img/pancakes.png'),
-    'zkvibibbU' => asset('img/notes.png'),
-];
-@endphp
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=2, initial-scale=1.0">
-    <title>Accueil</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- <link rel="stylesheet" href="{{ asset('css/livre.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/https://rsms.me/inter/inter.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/post.css')}}"> -->
-</head>
-<body>
-<header>
-       <a class="logo" href="Accueil">Logo </a>
-            <nav class="navigation">
-                <a href="#">Accueil</a>
-                <a href="#">à propos</a>
-                <a href="#">Services</a>
-                <a href="#">Contacts</a>
-                <button type="submit" href="Connexion" class="btnLogin-popup">Login</button>
-            </nav>
-        </header>      
-    <!-- <h1>Accueil</h1>
-    <p>Ceci sera la page d'Accueil</p> -->
-    <!-- <div class="md:container mx-auto md:px-6 lg:px-8 grid md:grid-cols-2 xl:grid-cols-3 gap-y-12 md:gap-x-8 pb-16 md:pt-16 grid grid-cols-3 gap-4"> -->
-<ul>
-  <li>
-    <div class="chimie"> 
-  <div  class="image">
-    @foreach($livre as $titre => $img)
-      <div  class="img">
-      <a href="bookchimie"><img src="{{$img}}" alt="{{$titre}}"></a>
-        
-        <h1>
-       {{$titre}}
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookchimie">Les livres de chimie</a>
-</div>
-  <!-- <a href="bookchimie">les livres de chimie</a> -->
-  </li>
+@extends('layouts.app')
+
+@section('title', 'Accueil')
+
+@section('content')
+<div class="container mx-auto">
+
+    <div class="container mx-auto">
+
+        {{-- Message de succès après inscription --}}
+        @if(session('success'))
+        <div class="alert alert-success bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
 
 
-  <li>
-  <div class="physique"> 
-  <div  class="physiqueimage">
-    @foreach($livre as $titre => $img)
-      <div  class="physiqueimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookphysique">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookphysique">Les livres de physique</a>
-</div>
-  <!-- <a href="bookmath">les livres de math</a> -->
-  </li>
+        <!-- Slider -->
+        <div class="relative overflow-hidden rounded-lg shadow-lg mb-12">
+            <div class="relative w-full h-64">
+                <div class="absolute inset-0 animate-slide">
+                    <img src="{{ asset('img/bikes.png') }}" alt="Image 1" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute inset-0 animate-slide delay-3000">
+                    <img src="{{ asset('img/blue.png') }}" alt="Image 2" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute inset-0 animate-slide delay-6000">
+                    <img src="{{ asset('img/notes.png') }}" alt="Image 3" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+
+        <!-- Présentation -->
+        <div class="mt-12 text-center">
+            <h1 class="text-5xl font-bold text-gray-800">Bienvenue sur MonBlog !</h1>
+            <p class="mt-4 text-lg text-gray-600">Découvrez, lisez et écrivez vos Livres préférées. Rejoignez notre communauté de scientifiques et de lecteurs passionnés.</p>
+            <a href="{{ route('discover') }}" class="mt-6 inline-block px-8 py-4 orange-button rounded-full text-lg shadow-md hover:bg-orange-600 transition-all duration-300">Commencer</a>
+        </div>
+
+        <!-- Sections supplémentaires -->
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="text-center bg-white p-8 rounded-lg shadow-lg">
+                <i class="fas fa-book-open text-5xl text-orange-500 mb-4"></i>
+                <h3 class="text-2xl font-semibold text-gray-800">Lisez des Histoires</h3>
+                <p class="mt-2 text-gray-600">Explorez une vaste bibliothèque de LIvre à la fois éducative que captivantes écrites par des auteurs du monde entier.</p>
+            </div>
+            <div class="text-center bg-white p-8 rounded-lg shadow-lg">
+                <i class="fas fa-pencil-alt text-5xl text-orange-500 mb-4"></i>
+                <h3 class="text-2xl font-semibold text-gray-800">Écrivez Vos Prores</h3>
+                <p class="mt-2 text-gray-600">Exprimez-vous et partagez vos récits avec une communauté grandissante d'écrivains et de lecteurs.</p>
+            </div>
+            <div class="text-center bg-white p-8 rounded-lg shadow-lg">
+                <i class="fas fa-users text-5xl text-orange-500 mb-4"></i>
+                <h3 class="text-2xl font-semibold text-gray-800">Rejoignez la Communauté</h3>
+                <p class="mt-2 text-gray-600">Connectez-vous avec d'autres passionnés et échangez des idées, conseils et inspirations.</p>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="mt-16 text-center">
+            <h2 class="text-3xl font-bold text-gray-800">Vous êtes prêts à commencer ?</h2>
+            <p class="mt-4 text-lg text-gray-600">Rejoignez-nous et commencez à faire partie d'une Communauté scientifique aujourd'hui !</p>
+            <a href="{{ route('register') }}" class="mt-6 inline-block px-8 py-4 bg-orange-500 text-black rounded-full text-lg shadow-md hover:bg-orange-600 transition-all duration-300 flex items-center justify-center">
+                <i class="fas fa-user-plus text-black mr-2"></i> Inscription
+            </a>
 
 
-  <li>
-  <div class="geologie"> 
-  <div  class="geologieimage">
-    @foreach($livre as $titre => $img)
-      <div  class="geologieimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookgeologie">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookgéologie">les livres de géologie</a>
-</div>
-  </li>
+        </div>
 
+    </div>
 
-  <li>
-  <div class="math"> 
-  <div  class="mathimage">
-    @foreach($livre as $titre => $img)
-      <div  class="mathimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookmath">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookmath">les livres de Mathématique</a>
-</div>
-  </li>
+    <style>
+        @keyframes slideShow {
 
+            0%,
+            25% {
+                opacity: 1;
+            }
 
-  <li>
-  <div class="geniecivil"> 
-  <div  class="geniecivilimage">
-    @foreach($livre as $titre => $img)
-      <div  class="geniecivilimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookgenie-civil">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookgeniecivil">les livres de Génie civil</a>
-</div>
-  </li>
- 
-  <li>
-  <div class="medecine"> 
-  <div  class="medecineimage">
-    @foreach($livre as $titre => $img)
-      <div  class="medecineimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookmedecine">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookmedecine">les livres de Medecine</a>
-</div>
-  </li>
+            30%,
+            100% {
+                opacity: 0;
+            }
+        }
 
+        .animate-slide {
+            animation: slideShow 9s infinite;
+            position: absolute;
+        }
 
-  <li>
-  <div class="biologie"> 
-  <div  class="biologieimage">
-    @foreach($livre as $titre => $img)
-      <div  class="biologieimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookbiologie">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookbiologie">les livres de Biologie</a>
-</div>
-  </li> 
+        .animate-slide.delay-3000 {
+            animation-delay: 3s;
+        }
 
-  <li>
-  <div class="informatique"> 
-  <div  class="informatiqueimage">
-    @foreach($livre as $titre => $img)
-      <div  class="informatiqueimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookinformatique">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookinformatique">les livres d'Informatique</a>
-</div>
-  </li>   
-</ul>
+        .animate-slide.delay-6000 {
+            animation-delay: 6s;
+        }
 
-<!-- <footer>
-  <section>
-    <h1>PIED DE PAGE</h1>
-  </section>
-</footer> -->
-</body>
-</html>
+        .orange-button {
+            background-color: #ff5722;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .orange-button:hover {
+            background-color: #e64a19;
+        }
+
+        /* Effet hover sur les cartes des services */
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+    </style>
+    @endsection
