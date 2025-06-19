@@ -41,9 +41,6 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.st
 
 
 
-
-
-
 Route::get('livres/Connexion', function () {
     return view('Connexion');
 });
@@ -76,3 +73,13 @@ Route::get('Lecture', function () {
 });
 // route permettant d'afficher un article en fonction de son id 
 Route::get('/livre/{id}', [LivreController::class, 'show'])->name('livre.show');
+Route::get('/blogg', [LivreController::class, 'index'])->name('livre.index');
+
+
+
+Route::prefix('livre')->group(function () {
+    Route::get('/', [LivreController::class, 'index'])->name('livre.index'); // Liste des livres
+    Route::get('/create', [LivreController::class, 'create'])->name('livre.create'); // Formulaire de création
+    Route::post('/', [LivreController::class, 'store'])->name('livre.store'); // Enregistrement d'un livre
+    Route::get('/{id}', [LivreController::class, 'show'])->name('livre.show'); // Afficher un livre spécifique
+});
