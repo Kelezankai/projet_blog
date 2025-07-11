@@ -6,32 +6,34 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Models\Role;
 
 class AuthController extends Controller
 {
-
-
-
-
     public function login(Request $request)
     {
-        // Validation des champs
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
 
-        // Vérification des informations d'identification
         if (Auth::attempt([
             'email' => $request->email,
             'password' => $request->password,
         ])) {
-            // Rediriger vers la page d'accueil si l'authentification réussit
-            return redirect()->route('discover');
+            $user = Auth::user();
+
+            // ✅ Redirection selon le rôle
+            switch ($user->role) {
+                case 'admin':
+                    return redirect()->route('admin.dashboard');
+                case 'ecrivain':
+                    return redirect()->route('dashboard.ecrivain');
+                case 'lecteur':
+                default:
+                    return redirect()->route('discover');
+            }
         }
 
-        // Retourner une erreur si l'authentification échoue
         return back()->withErrors([
             'email' => 'Les informations d\'identification sont incorrectes.',
         ]);
@@ -51,7 +53,7 @@ class AuthController extends Controller
             'firstname' => $request->firstname,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'lecteur', // nom correct dans la base
+            'role' => 'lecteur', // Par défaut
         ]);
 
         Auth::login($user);

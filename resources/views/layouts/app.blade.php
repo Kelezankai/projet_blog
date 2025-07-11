@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title') - MonBlog</title>
+    <title>@yield('title') MonBlog</title>
 
     <!-- Tailwind CSS -->
 
@@ -90,7 +90,11 @@
         <div class="container mx-auto flex items-center justify-between p-4">
             <!-- Logo -->
             <div class="flex items-center">
-                <img src="{{ asset('img/pancakes.png') }}" alt="Logo" class="h-12 w-12 rounded-full shadow-md mr-3 logo">
+                <img src="{{ asset('img/Flux_Dev_A_stylized_logo_for_a_blog_set_against_a_clean_and_si_0.jpg') }}"
+                    alt="Logo"
+                    class="h-12 w-12 rounded-full shadow-md mr-3 logo cursor-pointer"
+                    onclick="location.reload();">
+
                 <span class="text-2xl font-extrabold text-orange-500">MonBlog</span>
             </div>
 
@@ -100,7 +104,7 @@
                 <a href="{{ route('discover') }}" class="hover:text-green-500 transition-transform duration-300 ease-in-out transform hover:scale-105">Découvrir</a>
                 <a href="{{ route('login') }}" class="hover:text-red-500 transition-transform duration-300 ease-in-out transform hover:scale-105">Connexion</a>
 
-                <a href="{{ route('register') }}" class="hover:text-yellow-500 transition-transform duration-300 ease-in-out transform hover:scale-105">Inscription</a>
+                <!-- <a href="{{ route('register') }}" class="hover:text-yellow-500 transition-transform duration-300 ease-in-out transform hover:scale-105">Inscription</a> -->
             </nav>
 
             <!-- Mobile Menu Toggle -->

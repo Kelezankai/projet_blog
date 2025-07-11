@@ -16,15 +16,10 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'id',
         'name',
         'firstname',
         'email',
-        'email_verified_at',
         'password',
-        'remember_token',
-        'created_at',
-        'updated_at',
         'role',
     ];
 
@@ -34,7 +29,7 @@ class User extends Authenticatable
      */
     public function isWriter()
     {
-        return $this->rôle == 'ecrivain';
+        return $this->role == 'ecrivain';
     }
 
     /**
@@ -42,7 +37,7 @@ class User extends Authenticatable
      */
     public function isReader()
     {
-        return $this->rôle == 'lecteur';
+        return $this->role == 'lecteur';
     }
 
     /**
@@ -74,5 +69,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function livres()
+    {
+        return $this->hasMany(Livre::class);
     }
 }

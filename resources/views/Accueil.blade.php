@@ -3,114 +3,115 @@
 @section('title', 'Accueil')
 
 @section('content')
-<div class="container mx-auto">
+<div class="max-w-5xl mx-auto px-6 py-12 bg-[#fff8e1] rounded-lg shadow-xl font-serif text-[#4a3b1f]">
 
-    <div class="container mx-auto">
+    {{-- Message de succès --}}
+    @if(session('success'))
+    <div class="bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded mb-8 text-center font-semibold">
+        {{ session('success') }}
+    </div>
+    @endif
 
-        {{-- Message de succès après inscription --}}
-        @if(session('success'))
-        <div class="alert alert-success bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
-            {{ session('success') }}
-        </div>
-        @endif
-
-
-        <!-- Slider -->
-        <div class="relative overflow-hidden rounded-lg shadow-lg mb-12">
-            <div class="relative w-full h-64">
-                <div class="absolute inset-0 animate-slide">
-                    <img src="{{ asset('img/bikes.png') }}" alt="Image 1" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute inset-0 animate-slide delay-3000">
-                    <img src="{{ asset('img/blue.png') }}" alt="Image 2" class="w-full h-full object-cover">
-                </div>
-                <div class="absolute inset-0 animate-slide delay-6000">
-                    <img src="{{ asset('img/notes.png') }}" alt="Image 3" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-
-        <!-- Présentation -->
-        <div class="mt-12 text-center">
-            <h1 class="text-5xl font-bold text-gray-800">Bienvenue sur MonBlog !</h1>
-            <p class="mt-4 text-lg text-gray-600">Découvrez, lisez et écrivez vos Livres préférées. Rejoignez notre communauté de scientifiques et de lecteurs passionnés.</p>
-            <a href="{{ route('discover') }}" class="mt-6 inline-block px-8 py-4 orange-button rounded-full text-lg shadow-md hover:bg-orange-600 transition-all duration-300">Commencer</a>
-        </div>
-
-        <!-- Sections supplémentaires -->
-        <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="text-center bg-white p-8 rounded-lg shadow-lg">
-                <i class="fas fa-book-open text-5xl text-orange-500 mb-4"></i>
-                <h3 class="text-2xl font-semibold text-gray-800">Lisez des Histoires</h3>
-                <p class="mt-2 text-gray-600">Explorez une vaste bibliothèque de LIvre à la fois éducative que captivantes écrites par des auteurs du monde entier.</p>
-            </div>
-            <div class="text-center bg-white p-8 rounded-lg shadow-lg">
-                <i class="fas fa-pencil-alt text-5xl text-orange-500 mb-4"></i>
-                <h3 class="text-2xl font-semibold text-gray-800">Écrivez Vos Prores</h3>
-                <p class="mt-2 text-gray-600">Exprimez-vous et partagez vos récits avec une communauté grandissante d'écrivains et de lecteurs.</p>
-            </div>
-            <div class="text-center bg-white p-8 rounded-lg shadow-lg">
-                <i class="fas fa-users text-5xl text-orange-500 mb-4"></i>
-                <h3 class="text-2xl font-semibold text-gray-800">Rejoignez la Communauté</h3>
-                <p class="mt-2 text-gray-600">Connectez-vous avec d'autres passionnés et échangez des idées, conseils et inspirations.</p>
-            </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div class="mt-16 text-center">
-            <h2 class="text-3xl font-bold text-gray-800">Vous êtes prêts à commencer ?</h2>
-            <p class="mt-4 text-lg text-gray-600">Rejoignez-nous et commencez à faire partie d'une Communauté scientifique aujourd'hui !</p>
-            <a href="{{ route('register') }}" class="mt-6 inline-block px-8 py-4 bg-orange-500 text-black rounded-full text-lg shadow-md hover:bg-orange-600 transition-all duration-300 flex items-center justify-center">
-                <i class="fas fa-user-plus text-black mr-2"></i> Inscription
-            </a>
-
-
-        </div>
-
+    <!-- Slider style Wattpad -->
+    <div class="relative overflow-hidden rounded-xl shadow-lg mb-12 h-72 bg-[#ffb347]">
+        <img src="{{ asset('img/rashed-paykary-0qsndF2tcgM-unsplash.jpg') }}" alt="Image 1" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" id="slide1">
+        <img src="{{ asset('img/mikolaj-dR52tmClhpk-unsplash.jpg') }}" alt="Image 2" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" id="slide2">
+        <img src="{{ asset('img/janko-ferlic-sfL_QOnmy00-unsplash.jpg') }}" alt="Image 3" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" id="slide3">
     </div>
 
-    <style>
-        @keyframes slideShow {
+    <!-- Présentation -->
+    <div class="text-center mb-16">
+        <h1 class="text-5xl font-extrabold mb-3 tracking-wide text-[#d2691e]" style="font-family: 'Georgia', serif;">Bienvenue sur <span class="underline decoration-wavy decoration-[#ffb347]">MonBlog</span> !</h1>
+        <p class="text-lg max-w-xl mx-auto leading-relaxed font-medium italic text-[#5a3b00]">
+            Découvrez, lisez et écrivez vos livres préférés. Rejoignez notre communauté chaleureuse de passionnés de science et de littérature.
+        </p>
 
-            0%,
-            25% {
-                opacity: 1;
-            }
+        <!-- Bouton Commencer -->
+        <a href="{{ route('discover') }}"
+            class="mt-8 inline-block bg-gradient-to-r from-[#ffb347] via-[#ffcc33] to-[#d2691e] text-black font-bold px-12 py-4 rounded-full shadow-lg hover:brightness-110 transition duration-300 tracking-wide border border-[#e6a23c]"
+            style="font-family: 'Georgia', serif; text-shadow: 0 1px 1px rgba(255,255,255,0.4);">
+            📖 Commencer la lecture
+        </a>
+    </div>
 
-            30%,
-            100% {
-                opacity: 0;
-            }
-        }
+    <!-- Section Écrire -->
+    <div onclick="window.location.href='{{ url('/devenir-ecrivain') }}'"
+        class="bg-[#fff2cc] rounded-xl p-8 shadow-md hover:shadow-xl cursor-pointer transition duration-300 text-center">
+        <i class="fas fa-pencil-alt text-6xl mb-5 text-[#d2691e]"></i>
+        <h3 class="text-2xl font-semibold mb-2">✍️ Écrivez Vos Propres</h3>
+        <p class="leading-relaxed text-[#5a3b00] font-medium">
+            Partagez vos récits et exprimez votre créativité au sein d’une communauté bienveillante d’écrivains et lecteurs.
+        </p>
+    </div>
 
-        .animate-slide {
-            animation: slideShow 9s infinite;
-            position: absolute;
-        }
+    <!-- Call to Action -->
+    <div class="mt-20 text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-extrabold mb-4 tracking-wide text-[#c1440e]">Prêt à rejoindre l’aventure ?</h2>
+        <p class="text-lg leading-relaxed mb-6 text-[#5a3b00] font-medium">
+            Inscrivez-vous et commencez à écrire ou lire vos histoires préférées dès aujourd’hui.
+        </p>
 
-        .animate-slide.delay-3000 {
-            animation-delay: 3s;
-        }
+        <!-- Bouton Inscription -->
+        <a href="{{ route('register') }}"
+            class="inline-flex items-center justify-center bg-gradient-to-r from-[#ffb347] via-[#ffcc33] to-[#d2691e] text-black font-semibold px-12 py-4 rounded-full shadow-lg hover:brightness-110 transition duration-300 tracking-wide border border-[#e6a23c]"
+            style="text-shadow: 0 1px 1px rgba(255,255,255,0.5);">
+            <i class="fas fa-user-plus mr-3"></i> S’inscrire
+        </a>
+    </div>
+</div>
 
-        .animate-slide.delay-6000 {
-            animation-delay: 6s;
-        }
+<!-- SLIDER JS -->
+<script>
+    const slides = ['slide1', 'slide2', 'slide3'];
+    let current = 0;
 
-        .orange-button {
-            background-color: #ff5722;
-            color: white;
-            transition: background-color 0.3s;
-        }
+    setInterval(() => {
+        document.getElementById(slides[current]).classList.remove('opacity-100');
+        document.getElementById(slides[current]).classList.add('opacity-0');
 
-        .orange-button:hover {
-            background-color: #e64a19;
-        }
+        current = (current + 1) % slides.length;
 
-        /* Effet hover sur les cartes des services */
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-    </style>
-    @endsection
+        document.getElementById(slides[current]).classList.remove('opacity-0');
+        document.getElementById(slides[current]).classList.add('opacity-100');
+    }, 4000);
+</script>
+
+<!-- STYLES -->
+<style>
+    body {
+        background-color: #fff8e1;
+        font-family: 'Georgia', serif;
+    }
+
+    h1, h2, h3 {
+        text-shadow: 0 1px 1px rgba(102, 51, 0, 0.2);
+    }
+
+    p {
+        color: #5a3b00;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        filter: brightness(1.1);
+    }
+
+    /* Boutons cliquables */
+    .btn-wattpad {
+        background: linear-gradient(to right, #ffb347, #ffcc33, #d2691e);
+        color: black;
+        padding: 1rem 2.5rem;
+        font-weight: bold;
+        border-radius: 9999px;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-wattpad:hover {
+        transform: scale(1.05);
+    }
+</style>
+@endsection

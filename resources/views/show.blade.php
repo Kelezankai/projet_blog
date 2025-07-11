@@ -13,7 +13,7 @@
 //      die("Erreur de connexion : " . $e->getMessage());
 //  }
 
- //Requête SQL pour récupérer les livres de physique
+//Requête SQL pour récupérer les livres de physique
 // $query = "SELECT * from livres where id='1' ";
 //  $stmt = $pdo->query($query);
 // $livres = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -39,42 +39,44 @@
 @section('content')
 <h1 class="text-4xl font-bold text-center mb-12 text-orange-500"><?= htmlspecialchars($livre->titre) ?></h1>
 <section class="container mx-auto px-4 py-12">
-   <div class="Bookbiologie">
-          <div class="container mx-auto flex justify-center items-center min-h-screen">
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden w-3/4" >
-                   <img src="<?= asset($livre->image) ?>" alt="<?= htmlspecialchars( $livre->titre ) ?>" class="w-full h-[400px] object-cover">
-                   <div class="mt-10 sm:mt-14 px-4 sm:px-6 md:px-0">
-                     <form method="POST" action="" novalidate>
-                     <input type="text" name="comment" placeholder="Écrivez votre commentaire et tapez sur ↵" class="w-full h-14 px-6 border-none focus:outline-none focus:ring-0 bg-gray-100 rounded-full">   
-                     </form>
-                    </div> 
-                </div>
-                <div class="p-6">
-                  <p class="text-center max-w-2xl mx-auto text-gray-600 text-lg mt-4"><?= htmlspecialchars($livre->description) ?></p>
-                </div>
+  <div class="Bookbiologie">
+    <div class="container mx-auto flex justify-center items-center min-h-screen">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden w-3/4">
+        <img src="<?= asset($livre->image) ?>" alt="<?= htmlspecialchars($livre->titre) ?>" class="w-full h-[400px] object-cover">
+        <div class="mt-10 sm:mt-14 px-4 sm:px-6 md:px-0">
+
+          <div class="p-6">
+            <p class="text-center max-w-2xl mx-auto text-gray-600 text-lg mt-4"><?= htmlspecialchars($livre->description) ?></p>
           </div>
+          <form method="POST" action="" novalidate>
+            <input type="text" name="comment" placeholder="Écrivez votre commentaire et tapez sur ↵" class="w-full h-14 px-6 border-none focus:outline-none focus:ring-0 bg-gray-100 rounded-full">
+          </form>
+        </div>
+      </div>
+
     </div>
-@endsection
+  </div>
+  @endsection
 
 
 
 
 
 
-<!-- <link rel="stylesheet" href="{{ asset('https://rsms.me/inter/inter.css') }}">
+  <!-- <link rel="stylesheet" href="{{ asset('https://rsms.me/inter/inter.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 <article>
     dernier modification de l'image "class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 hover:shadow-2xl transition duration-300""
       <img class="w-full" src="../img/pancakes.png" alt="pancakes.png">
       <div class="px-4 sm:px-6 md:px-0"> -->
-        <!-- <div x-data="{ modal: false }" x-cloak class="flex space-x-4 mt-6">
+  <!-- <div x-data="{ modal: false }" x-cloak class="flex space-x-4 mt-6">
           <a href="edit.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Modifier le post
           </a>
           <button @click="modal = true" type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Supprimer le post
           </button> -->
-          <!-- <div x-show="modal" class="fixed z-10 inset-0 overflow-y-auto">
+  <!-- <div x-show="modal" class="fixed z-10 inset-0 overflow-y-auto">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
               <div 
                 x-show="modal"
@@ -125,11 +127,11 @@
                 </div>
                 <form method="POST" action="" id="delete-form" class="hidden">
                 </form> -->
-              <!-- </div>
+  <!-- </div>
             </div> -->
-          <!-- </div>
+  <!-- </div>
         </div> -->
-        <!-- <time datetime="" class="block mt-6 font-normal text-sm text-gray-700">
+  <!-- <time datetime="" class="block mt-6 font-normal text-sm text-gray-700">
           Publié le 18/02/2021 à 10:31
         </time>
         <h1 class="mt-6 text-4xl font-bold text-gray-900 sm:leading-normal">
