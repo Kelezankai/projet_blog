@@ -6,65 +6,68 @@ use App\Models\Livre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class LivreController extends Controller
 {
-    // ✅ Pour publier un livre (réservé à l’écrivain)
-    public function publier(Request $request)
+    // Affiche tous les livres
+    public function index()
     {
-        if (!Auth::check() || Auth::user()->role !== 'ecrivain') {
-            return redirect()->route('home')->with('error', 'Seuls les écrivains peuvent publier des livres.');
-        }
+        $livres = Livre::all();
+        return view('livres.index', compact('livres'));
+    }
 
+    // Affiche le formulaire de création
+    public function create()
+    {
+        $categories = ['biologie', 'chimie', 'genie-civil', 'geologie', 'informatique', 'math', 'medecine', 'physique'];
+        return view('livres.create', compact('categories'));
+    }
+
+    // Enregistre un nouveau livre
+
+    public function store(Request $request)
+    {
         $request->validate([
             'titre' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'categorie' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'categorie' => 'required|string|max:100',
+            'description' => 'required|string',
         ]);
 
-        $imagePath = null;
+        $image = $request->file('image');
+        $imageName = time() . '_' . $image->getClientOriginalName();
+        $image->move(public_path('img'), $imageName);
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('livres', 'public'); // stocke l'image dans storage/app/public/livres
-        }
-
-        Livre::create([
+        $livre = Livre::create([
             'titre' => $request->titre,
-            'description' => $request->description,
+            'image' => 'img/' . $imageName,
             'categorie' => $request->categorie,
-            'user_id' => Auth::id(),
-            'image' => $imagePath, // enregistre le chemin de l’image
+            'description' => $request->description,
+            'user_id' => Auth::id(), // 👈 Plus sécurisé
         ]);
 
-        return redirect()->route('livres.categorie', ['categorie' => $request->categorie])
-            ->with('success', 'Livre publié avec succès.');
+        return redirect()->route('livres.show', $livre->id)
+            ->with('success', 'Livre publié avec succès !');
     }
 
-    // ✅ Afficher tous les livres pour les lecteurs
-    public function tousLesLivres()
-    {
-        if (!Auth::check() || Auth::user()->role !== 'lecteur') {
-            return redirect()->route('home')->with('error', 'Accès réservé aux lecteurs.');
-        }
 
-        $livres = Livre::all();
-        return view('lecteur.articles', compact('livres'));
+
+    // Affiche un livre spécifique
+    public function show($id)
+    {
+        $livre = Livre::findOrFail($id);
+        return view('livres.show', compact('livre'));
     }
 
-    // ✅ Affichage des livres par catégorie (accessible à tous si connecté)
-    public function afficherParCategorie($categorie)
+    // Tableau de bord de l'écrivain : uniquement ses livres
+    public function dashboard()
     {
-        if (!Auth::check()) {
-            return redirect()->route('login')->with('error', 'Veuillez vous connecter pour voir les livres.');
+        if (Auth::user()->role !== 'ecrivain') {
+            abort(403, 'Accès non autorisé.');
         }
 
-        $livres = Livre::where('categorie', $categorie)->get();
-        $viewName = 'book' . strtolower($categorie); // ex: bookroman, bookpoesie...
+        $livres = Livre::where('user_id', Auth::id())->latest()->get();
 
-        if (!view()->exists($viewName)) {
-            abort(404, 'La vue pour cette catégorie n\'existe pas.');
-        }
-
-        return view($viewName, compact('livres'));
+        return view('ecrivain.dashboard', compact('livres'));
     }
 }

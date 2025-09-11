@@ -1,178 +1,117 @@
-@php
-$livre =[
-    'zkIVBIVU' => asset('img/blue.png'),
-    'zkvIVBIVU' => asset('img/bikes.png'),
-    'vhbvivhlbv' => asset('img/pancakes.png'),
-    'zkvibibbU' => asset('img/notes.png'),
-];
-@endphp
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=2, initial-scale=1.0">
-    <title>Accueil</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <!-- <link rel="stylesheet" href="{{ asset('css/livre.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/https://rsms.me/inter/inter.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/post.css')}}"> -->
-</head>
-<body>
-<header>
-       <a class="logo" href="Accueil">Logo </a>
-            <nav class="navigation">
-                <a href="#">Accueil</a>
-                <a href="#">à propos</a>
-                <a href="#">Services</a>
-                <a href="#">Contacts</a>
-                <button type="submit" href="Connexion" class="btnLogin-popup">Login</button>
-            </nav>
-        </header>      
-    <!-- <h1>Accueil</h1>
-    <p>Ceci sera la page d'Accueil</p> -->
-    <!-- <div class="md:container mx-auto md:px-6 lg:px-8 grid md:grid-cols-2 xl:grid-cols-3 gap-y-12 md:gap-x-8 pb-16 md:pt-16 grid grid-cols-3 gap-4"> -->
-<ul>
-  <li>
-    <div class="chimie"> 
-  <div  class="image">
-    @foreach($livre as $titre => $img)
-      <div  class="img">
-      <a href="bookchimie"><img src="{{$img}}" alt="{{$titre}}"></a>
-        
-        <h1>
-       {{$titre}}
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookchimie">Les livres de chimie</a>
+@extends('layouts.app')
+
+@section('title', 'Accueil')
+
+@section('content')
+<div class="max-w-5xl mx-auto px-6 py-12 bg-[#fff8e1] rounded-lg shadow-xl font-serif text-[#4a3b1f]">
+
+    {{-- Message de succès --}}
+    @if(session('success'))
+    <div class="bg-green-100 border border-green-300 text-green-800 px-4 py-3 rounded mb-8 text-center font-semibold">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    <!-- Slider style Wattpad -->
+    <div class="relative overflow-hidden rounded-xl shadow-lg mb-12 h-72 bg-[#ffb347]">
+        <img src="{{ asset('img/rashed-paykary-0qsndF2tcgM-unsplash.jpg') }}" alt="Image 1" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000" id="slide1">
+        <img src="{{ asset('img/mikolaj-dR52tmClhpk-unsplash.jpg') }}" alt="Image 2" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" id="slide2">
+        <img src="{{ asset('img/janko-ferlic-sfL_QOnmy00-unsplash.jpg') }}" alt="Image 3" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000" id="slide3">
+    </div>
+
+    <!-- Présentation -->
+    <div class="text-center mb-16">
+        <h1 class="text-5xl font-extrabold mb-3 tracking-wide text-[#d2691e]" style="font-family: 'Georgia', serif;">Bienvenue sur <span class="underline decoration-wavy decoration-[#ffb347]">MonBlog</span> !</h1>
+        <p class="text-lg max-w-xl mx-auto leading-relaxed font-medium italic text-[#5a3b00]">
+            Découvrez, lisez et écrivez vos livres préférés. Rejoignez notre communauté chaleureuse de passionnés de science et de littérature.
+        </p>
+
+        <!-- Bouton Commencer -->
+        <a href="{{ route('discover') }}"
+            class="mt-8 inline-block bg-gradient-to-r from-[#ffb347] via-[#ffcc33] to-[#d2691e] text-black font-bold px-12 py-4 rounded-full shadow-lg hover:brightness-110 transition duration-300 tracking-wide border border-[#e6a23c]"
+            style="font-family: 'Georgia', serif; text-shadow: 0 1px 1px rgba(255,255,255,0.4);">
+            📖 Commencer la lecture
+        </a>
+    </div>
+
+    <!-- Section Écrire -->
+    <div onclick="window.location.href='{{ url('/devenir-ecrivain') }}'"
+        class="bg-[#fff2cc] rounded-xl p-8 shadow-md hover:shadow-xl cursor-pointer transition duration-300 text-center">
+        <i class="fas fa-pencil-alt text-6xl mb-5 text-[#d2691e]"></i>
+        <h3 class="text-2xl font-semibold mb-2">✍️ Écrivez Vos Propres</h3>
+        <p class="leading-relaxed text-[#5a3b00] font-medium">
+            Partagez vos récits et exprimez votre créativité au sein d’une communauté bienveillante d’écrivains et lecteurs.
+        </p>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="mt-20 text-center max-w-2xl mx-auto">
+        <h2 class="text-3xl font-extrabold mb-4 tracking-wide text-[#c1440e]">Prêt à rejoindre l’aventure ?</h2>
+        <p class="text-lg leading-relaxed mb-6 text-[#5a3b00] font-medium">
+            Inscrivez-vous et commencez à écrire ou lire vos histoires préférées dès aujourd’hui.
+        </p>
+
+        <!-- Bouton Inscription -->
+        <a href="{{ route('register') }}"
+            class="inline-flex items-center justify-center bg-gradient-to-r from-[#ffb347] via-[#ffcc33] to-[#d2691e] text-black font-semibold px-12 py-4 rounded-full shadow-lg hover:brightness-110 transition duration-300 tracking-wide border border-[#e6a23c]"
+            style="text-shadow: 0 1px 1px rgba(255,255,255,0.5);">
+            <i class="fas fa-user-plus mr-3"></i> S’inscrire
+        </a>
+    </div>
 </div>
-  <!-- <a href="bookchimie">les livres de chimie</a> -->
-  </li>
 
+<!-- SLIDER JS -->
+<script>
+    const slides = ['slide1', 'slide2', 'slide3'];
+    let current = 0;
 
-  <li>
-  <div class="physique"> 
-  <div  class="physiqueimage">
-    @foreach($livre as $titre => $img)
-      <div  class="physiqueimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookphysique">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookphysique">Les livres de physique</a>
-</div>
-  <!-- <a href="bookmath">les livres de math</a> -->
-  </li>
+    setInterval(() => {
+        document.getElementById(slides[current]).classList.remove('opacity-100');
+        document.getElementById(slides[current]).classList.add('opacity-0');
 
+        current = (current + 1) % slides.length;
 
-  <li>
-  <div class="geologie"> 
-  <div  class="geologieimage">
-    @foreach($livre as $titre => $img)
-      <div  class="geologieimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookgeologie">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookgéologie">les livres de géologie</a>
-</div>
-  </li>
+        document.getElementById(slides[current]).classList.remove('opacity-0');
+        document.getElementById(slides[current]).classList.add('opacity-100');
+    }, 4000);
+</script>
 
+<!-- STYLES -->
+<style>
+    body {
+        background-color: #fff8e1;
+        font-family: 'Georgia', serif;
+    }
 
-  <li>
-  <div class="math"> 
-  <div  class="mathimage">
-    @foreach($livre as $titre => $img)
-      <div  class="mathimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookmath">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookmath">les livres de Mathématique</a>
-</div>
-  </li>
+    h1, h2, h3 {
+        text-shadow: 0 1px 1px rgba(102, 51, 0, 0.2);
+    }
 
+    p {
+        color: #5a3b00;
+    }
 
-  <li>
-  <div class="geniecivil"> 
-  <div  class="geniecivilimage">
-    @foreach($livre as $titre => $img)
-      <div  class="geniecivilimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookgenie-civil">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookgeniecivil">les livres de Génie civil</a>
-</div>
-  </li>
- 
-  <li>
-  <div class="medecine"> 
-  <div  class="medecineimage">
-    @foreach($livre as $titre => $img)
-      <div  class="medecineimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookmedecine">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookmedecine">les livres de Medecine</a>
-</div>
-  </li>
+    a {
+        text-decoration: none;
+    }
 
+    a:hover {
+        filter: brightness(1.1);
+    }
 
-  <li>
-  <div class="biologie"> 
-  <div  class="biologieimage">
-    @foreach($livre as $titre => $img)
-      <div  class="biologieimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookbiologie">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookbiologie">les livres de Biologie</a>
-</div>
-  </li> 
+    /* Boutons cliquables */
+    .btn-wattpad {
+        background: linear-gradient(to right, #ffb347, #ffcc33, #d2691e);
+        color: black;
+        padding: 1rem 2.5rem;
+        font-weight: bold;
+        border-radius: 9999px;
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
 
-  <li>
-  <div class="informatique"> 
-  <div  class="informatiqueimage">
-    @foreach($livre as $titre => $img)
-      <div  class="informatiqueimg">
-        <img src="{{$img}}" alt="{{$titre}}">
-        <h1 class="mt-4 text-2xl sm:text-3xl md:text-2xl font-bold text-gray-900">
-          <a href="bookinformatique">{{$titre}}</a>
-        </h1>
-      </div>
-    @endforeach
-  </div>
-  <a href="bookinformatique">les livres d'Informatique</a>
-</div>
-  </li>   
-</ul>
-
-<!-- <footer>
-  <section>
-    <h1>PIED DE PAGE</h1>
-  </section>
-</footer> -->
-</body>
-</html>
+    .btn-wattpad:hover {
+        transform: scale(1.05);
+    }
+</style>
+@endsection

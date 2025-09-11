@@ -6,187 +6,123 @@ use App\Http\Controllers\LivreController;
 use App\Http\Controllers\CommentaireController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\DemandeEcrivainController;
 
 
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('php', function () {
-    return view('Accueil');
-})->name('livres.accueil');
+    return view('Accueil'); // Respecte bien la casse
+})->name('Accueil');
+
+Route::get('/discover', function () {
+    return view('discover');
+})->name('discover');
+
+Route::get('/decouvrir', function () {
+    return view('discover');
+})->name('decouvrir');
 
 
 
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+// Optionnel : route pour la page de connexion (GET)
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login.page');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+
+// Route::get('/livre/detail', function () {
+//     return view('book.detail');
+// })->name('livre.detail');
 
 
 
-
-Route::get('livres/Inscription', function () {
-    return view('Inscription');
-});
 Route::get('livres/Connexion', function () {
     return view('Connexion');
 });
-// Route pour l'inscription
-Route::post('livres/Inscription', [AuthController::class, 'register']);
+Route::get('bookbiologie', function () {
+    return view('bookbiologie');
+});
+Route::get('bookchimie', function () {
+    return view('bookchimie');
+});
+Route::get('bookphysique', function () {
+    return view('bookphysique');
+});
+Route::get('bookmath', function () {
+    return view('bookmath');
+});
+Route::get('bookgeologie', function () {
+    return view('bookgeologie');
+});
+Route::get('bookgenie-civil', function () {
+    return view('bookgenie-civil');
+});
+Route::get('bookmedecine', function () {
+    return view('bookmedecine');
+});
+Route::get('bookinformatique', function () {
+    return view('bookinformatique');
+});
+Route::get('Lecture', function () {
+    return view('show');
+});
+// route permettant d'afficher un article en fonction de son id 
+Route::get('/livre/{id}', [LivreController::class, 'show'])->name('livre.show');
+Route::get('/blogg', [LivreController::class, 'index'])->name('livre.index');
 
-// Route pour la connexion
-Route::post('livres/Connexion', [AuthController::class, 'login']);
 
-Route::post('livres/deconnexion', [AuthController::class, 'logout']);
 
+Route::prefix('livre')->group(function () {
+    Route::get('/', [LivreController::class, 'index'])->name('livre.index'); // Liste des livres
+    Route::get('/create', [LivreController::class, 'create'])->name('livre.create'); // Formulaire de création
+    Route::post('/', [LivreController::class, 'store'])->name('livre.store'); // Enregistrement d'un livre
+    Route::get('/{id}', [LivreController::class, 'show'])->name('livre.show'); // Afficher un livre 
+    Route::get('/livres', [LivreController::class, 'index'])->name('livres.index');
+});
 
-// Route::get('bookbiologie', function () {
-//     return view('bookbiologie');
-// })->name('livres.biologie');
-// Route::get('bookchimie', function () {
-//     return view('bookchimie');
-// })->name('livres.chimie');
-// Route::get('bookphysique', function () {
-//     return view('bookphysique');
-// });
-// Route::get('bookmath', function () {
-//     return view('bookmath');
-// });
-// Route::get('bookgeologie', function () {
-//     return view('bookgeologie');
-// });
-// Route::get('bookgenie-civil', function () {
-//     return view('bookgenie-civil');
-// });
-// Route::get('livres/bookmedecine', function () {
-//     return view('bookmedecine');
-// });
-// Route::get('bookinformatique', function () {
-//     return view('bookinformatique');
-// });
 
+Route::resource('livres', LivreController::class);
 
 
 
 
 
-// Pour publier un livre (formulaire POST)
-Route::post('/livres/publier', [LivreController::class, 'publier'])->name('livres.publier');
 
-// Afficher tous les livres pour le lecteur
-Route::get('/lecteur/articles', [LivreController::class, 'tousLesLivres'])->name('lecteur.articles');
+Route::get('/admin/demandes', [DemandeEcrivainController::class, 'adminIndex'])->name('admin.demandes.index');
+Route::post('/admin/demandes/{id}/approuver', [DemandeEcrivainController::class, 'approuver'])->name('admin.demandes.approuver');
+Route::delete('/admin/demandes/{id}', [DemandeEcrivainController::class, 'supprimer'])->name('admin.demandes.supprimer');
 
-// Afficher livres par catégorie
-Route::get('/livres/categorie/{categorie}', [LivreController::class, 'afficherParCategorie'])->name('livres.categorie');
 
+Route::get('/devenir-ecrivain', [DemandeEcrivainController::class, 'create'])->name('demande-ecrivain.create');
+Route::post('/devenir-ecrivain', [DemandeEcrivainController::class, 'store'])->name('demande-ecrivain.store');
 
+Route::post('/livres/{livre}/commentaires', [CommentaireController::class, 'store'])->name('commentaires.store');
 
 
+Route::get('/ecrivain/dashboard', [LivreController::class, 'dashboard'])
+    ->name('dashboard.ecrivain')
+    ->middleware('auth');
 
-// Route pour afficher les livres d'une catégorie spécifique
-Route::get('/livres/{categorie}', [LivreController::class, 'afficherParCategorie'])->name('livres.categorie');
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth'])->name('admin.dashboard');
 
-// Route pour publier un livre
-Route::post('/livres/publier', [LivreController::class, 'publier'])->name('livres.publier');
 
-Route::get('/livres/physique', [LivreController::class, 'afficherParCategorie'])->name('livres.physique');
-Route::get('/livres/chimie', [LivreController::class, 'afficherParCategorie'])->name('livres.chimie');
-Route::get('/livres/geologie', [LivreController::class, 'afficherParCategorie'])->name('livres.geologie');
-Route::get('/livres/genie-civil', [LivreController::class, 'afficherParCategorie'])->name('livres.genie-civil');
-Route::get('/livres/math', [LivreController::class, 'afficherParCategorie'])->name('livres.math');
-Route::get('/livres/informatique', [LivreController::class, 'afficherParCategorie'])->name('livres.informatique');
-Route::get('/livres/medecine', [LivreController::class, 'afficherParCategorie'])->name('livres.medecine');
-Route::get('/livres/biologie', [LivreController::class, 'afficherParCategorie'])->name('livres.biologie');
+// Utilisateurs
+Route::get('/admin/utilisateurs', [AdminController::class, 'showUsers'])->name('admin.users.index');
+Route::patch('/admin/utilisateurs/{id}/role', [AdminController::class, 'updateUserRole'])->name('admin.users.updateRole');
+Route::delete('/admin/utilisateurs/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
+// Livres
+Route::get('/admin/livres', [AdminController::class, 'showLivres'])->name('admin.livres.index');
+Route::delete('/admin/livres/{id}', [AdminController::class, 'deleteLivre'])->name('admin.livres.delete');
 
-// // Route dynamique pour afficher les livres par catégorie
-// Route::get('/lecteur/articles/{categorie}', [LivreController::class, 'afficherParCategorie'])->name('lecteur.articles');
-
-
-
-
-
-
-
-
-Route::get('/ecrivain/dashboard', function () {
-    // Vérifie si l'utilisateur est un écrivain
-    if (Auth::check() && Auth::user()->role === 'ecrivain') {
-        return view('ecrivain.dashboard');
-    } else {
-        return redirect()->route('home')->with('error', 'Vous n\'avez pas accès à ce tableau de bord.');
-    }
-})->name('ecrivain.dashboard');
-
-Route::get('/lecteur/articles', function () {
-    // Vérifie si l'utilisateur est un lecteur
-    if (Auth::check() && Auth::user()->role === 'lecteur') {
-        return view('lecteur.articles');
-    } else {
-        return redirect()->route('home')->with('error', 'Vous n\'avez pas accès à cette section.');
-    }
-})->name('lecteur.articles');
-
-// Route d'accueil (pour les non connectés ou autres)
-// Route::get('/home', function () {
-//     return view('home'); // Vue d'accueil
-// })->name('home');
-
-
-
-
-
-
-
-// Route pour afficher tous les utilisateurs (accessible uniquement par un administrateur)
-Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
-
-// Route pour mettre à jour le rôle d'un utilisateur
-Route::post('/admin/users/{userId}/update', [AdminController::class, 'updateUserRole'])->name('admin.updateRole');
-
-
-
-
-
-// use App\Http\Controllers\AdminController;
-
-// Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
-// Route::post('/admin/users/{id}/update-role', [AdminController::class, 'updateUserRole'])->name('admin.updateRole');
-
-
-
-
-
-// Route pour afficher la gestion des utilisateurs
-Route::get('/admin/dashboard', [AdminController::class, 'showUsers'])->name('admin.dashboard');
-
-// Route pour mettre à jour le rôle d'un utilisateur
-Route::put('/admin/user/{id}/update', [AdminController::class, 'updateUserRole'])->name('admin.updateRole');
-
-
-// Route::get('inscription/attente', function () {
-//     return view('inscription.attente'); // Page d'attente après l'inscription
-// })->name('inscription.attente');
-
-// Admin - Gestion des utilisateurs
-Route::get('/admin/users', [AdminController::class, 'showUsers'])->name('admin.users');
-Route::put('/admin/user/{id}/update', [AdminController::class, 'updateUserRole'])->name('admin.updateRole');
-
-
-
-
-
-
-
-// Afficher le formulaire d'inscription
-Route::get('/inscription', [AuthController::class, 'showRegistrationForm'])->name('inscription.form');
-
-// Soumettre le formulaire d'inscription
-Route::post('/inscription', [AuthController::class, 'register'])->name('inscription.submit');
-
-//Page d'attente après inscription
-// Route::get('/attente', function () {
-//     return view('attente'); // Crée une vue 'attente.blade.php'
-// })->name('inscription.attente');
-
-
-
-
-Route::post('/livres/{livre}/commenter', [CommentaireController::class, 'store'])->name('commentaire.store');
+// Commentaires admin
+Route::get('/admin/commentaires', [AdminController::class, 'showCommentaires'])->name('admin.commentaires.index');
+Route::delete('/admin/commentaires/{id}', [AdminController::class, 'deleteCommentaire'])->name('admin.commentaires.delete');

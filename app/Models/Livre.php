@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Livre extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'titre',
+        'description',
+        'categorie',
+        'user_id',
+        'image'
+    ];
 
-    // ✅ Ajout du champ image ici
-    protected $fillable = ['titre', 'description', 'categorie', 'image', 'user_id'];
 
     /**
      * Un livre peut avoir plusieurs commentaires.
@@ -18,5 +23,12 @@ class Livre extends Model
     public function commentaires()
     {
         return $this->hasMany(Commentaire::class);
+    }
+
+    // App\Models\Livre.php
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

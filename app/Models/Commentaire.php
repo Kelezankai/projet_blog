@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Commentaire extends Model
 {
     // Déclare les champs qui peuvent être massivement assignés
-    protected $fillable = ['contenu', 'livre_id', 'user_id'];
-
+    protected $fillable = ['contenu', 'user_id', 'livre_id'];
     // Relation avec l'utilisateur
     public function user()
     {
